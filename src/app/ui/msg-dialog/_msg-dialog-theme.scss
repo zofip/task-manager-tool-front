@@ -1,0 +1,17 @@
+@mixin msg-dialog-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    .msg-dialog {
+        mat-icon {
+            font-size: 40px;
+        } 
+
+        .with-icon {
+            margin-left: 20px;
+        }
+    }
+}

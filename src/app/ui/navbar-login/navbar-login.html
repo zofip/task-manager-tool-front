@@ -1,0 +1,42 @@
+<mat-sidenav-container class="sidenav-container" *ngIf="personLogged">
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <!-- Title -->
+        <button mat-button (click)="emitClick()">{{ project }}</button>
+        <!-- Space -->
+        <div fxFlex></div>
+        <!-- Change password -->
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>account_circle</mat-icon>
+          {{ personLogged.nombreCompleto }}
+        </button>
+        <mat-menu #menu="matMenu">
+          <mat-card>
+            <mat-card-content fxLayout="column" fxLayoutAlign="start start">
+              <div class="accent"><strong>State:</strong></div>
+              <div> {{ personLogged.estado }} </div>
+              <div class="accent"><strong>Email </strong></div>
+              <div>{{ personLogged.email }}</div>
+              <div class="accent"><strong>RFC </strong></div>
+              <div>{{ personLogged.rfc }}</div>
+            </mat-card-content>
+          </mat-card>
+          <a mat-menu-item [href]="linkChangePassword" target="_blank">
+            <span>ChangePassword</span>
+          </a>
+        </mat-menu>
+        <!-- Log out -->
+        <button mat-button (click)="logout()">LogOut</button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-container [ngTemplateOutlet]="contentTemplate"></ng-container>
+    <!-- Footer -->
+    <mat-toolbar class="footer" color="primary">
+      <mat-toolbar-row fxLayoutAlign="end end">
+        <span>© AudaMedic | Todos los derechos reservados</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>

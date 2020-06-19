@@ -1,0 +1,17 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.footer {
+  margin-top: 29px;
+  z-index: 2;
+  span {
+    font-size: 12px;
+  }
+}

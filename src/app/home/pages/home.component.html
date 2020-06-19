@@ -1,0 +1,7 @@
+<ng-template #routerHome>
+  <router-outlet></router-outlet>
+</ng-template>
+<app-navbar-login [personLogged]="true"
+  project="WebRequests" (clickProject)="goHome()" linkChangePassword="xxx"
+  [contentTemplate]="routerHome">
+</app-navbar-login>

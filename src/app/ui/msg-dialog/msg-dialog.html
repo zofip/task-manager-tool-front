@@ -1,0 +1,17 @@
+<div class="msg-dialog">
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <div mat-dialog-title>
+      <mat-icon [color]="data.color">{{ data.icon }}</mat-icon>
+    </div>
+    <div class="with-icon">
+      <h2 mat-dialog-title>{{ data.title | translate }}</h2>
+    </div>
+  </div>
+  <mat-dialog-content>
+    <span *ngIf="data.message" >{{ data.message | translate:param }}</span>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end" fxLayoutGap="10px">
+    <button mat-stroked-button [mat-dialog-close]="true" (click)="close()" color="accent">{{ data.btnClose | translate }}</button>
+    <button mat-raised-button (click)="goOut()" [mat-dialog-close]="true" cdkFocusInitial color="accent">{{ data.btnGoOut | translate }}</button>
+  </mat-dialog-actions>
+</div>
