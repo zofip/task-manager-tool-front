@@ -1,0 +1,42 @@
+@import '../node_modules/@angular/material/theming';
+@import './app/home/home-theme';
+@import './app/ui/msg-dialog/msg-dialog-theme';
+
+
+// Styles for the docs app that are based on the current theme.
+@mixin app-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    // Styles General
+    .app-background {
+        background: mat-color($grey-palette, 300);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0; 
+        
+        h1 {
+            color: mat-color($accent);
+        }
+        .primary {
+            color: mat-color($primary);
+        }
+        .accent {
+            color: mat-color($accent);
+        }
+        .space-only {
+            height: 24px;
+        }
+        .mat-stroked-button {
+            border-color: mat-color($accent, .8);
+            background-color: mat-color($background, background);
+        }
+    }
+    @include home-theme($theme);
+    @include msg-dialog-theme($theme);
+}

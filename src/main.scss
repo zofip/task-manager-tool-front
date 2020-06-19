@@ -1,0 +1,27 @@
+@import '~@angular/material/theming';
+@import './app-theme';
+
+
+// Include material core styles.
+@include mat-core();
+
+
+// Define the light theme.
+$primary: mat-palette($mat-light-blue, 900);
+$accent:  mat-palette($mat-teal, 500, 600, 700);
+
+$grey-palette: mat-palette($mat-grey, 600);
+
+$theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+@include app-theme($theme);
+
+html {
+    display: block;
+    
+    body {
+        font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+        margin: 0;
+    }
+}
