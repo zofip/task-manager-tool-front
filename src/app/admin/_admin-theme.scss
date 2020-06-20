@@ -1,0 +1,26 @@
+@mixin admin-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    
+    .admin {
+        .element-card {
+            max-width: 200px;
+            margin-bottom: 24px;
+        }
+        .element-card:hover {
+            background: #f5f5f5;
+        }
+        .element-card:active {
+            background: #efefef;
+        }
+        .element-card-checked {
+            background: #efefef;
+        }
+        h2 {
+            color: mat-color($accent);
+        }
+    }
+}

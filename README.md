@@ -29,3 +29,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## References
 
     - https://www.campusmvp.es/recursos/post/Que-son-las-Aplicaciones-Web-Progresivas-o-Progressive-Web-Apps.aspx
+    - https://jasonwatmore.com/post/2020/05/15/angular-9-role-based-authorization-tutorial-with-example
+    - https://github.com/cornflourblue/angular-9-role-based-authorization-example/blob/master/src/app/_services/authentication.service.ts

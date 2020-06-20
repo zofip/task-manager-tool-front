@@ -1,5 +1,6 @@
 @import '../node_modules/@angular/material/theming';
 @import './app/home/home-theme';
+@import './app/admin/admin-theme';
 @import './app/ui/msg-dialog/msg-dialog-theme';
 
 
@@ -38,5 +39,6 @@
         }
     }
     @include home-theme($theme);
+    @include admin-theme($theme);
     @include msg-dialog-theme($theme);
 }

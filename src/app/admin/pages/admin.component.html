@@ -1,0 +1,32 @@
+<div class="container admin">
+  <div class="header">
+    <h3>Admin</h3>
+    <div class="tab"></div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <mat-card
+      fxFlex
+      class="element-card"
+      [class.element-card-checked]="tabAdminEnum.Projects === selectTab"
+      (click)="select(tabAdminEnum.Projects)"
+    >
+      <mat-card-header>
+        <mat-card-title>Projects</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+    <mat-card
+      fxFlex
+      class="element-card"
+      [class.element-card-checked]="tabAdminEnum.Users === selectTab"
+      (click)="select(tabAdminEnum.Users)"
+    >
+      <mat-card-header>
+        <mat-card-title>Users</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </div>
+  <ng-template #loading>
+    <app-spinner></app-spinner>
+  </ng-template>
+</div>

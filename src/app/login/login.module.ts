@@ -6,6 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { LoginRoutingModule } from './login-routing.module';
 
 import { SpinnerModule } from '../ui/spinner/spinner';
@@ -21,6 +23,7 @@ import { LoginComponent } from './pages/login.component';
     FormsModule,
     ReactiveFormsModule,
     LoginRoutingModule,
+    MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
