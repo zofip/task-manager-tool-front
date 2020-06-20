@@ -2,13 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import {MatToolbarModule} from '@angular/material/toolbar'; 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { environment } from '../environments/environment';
 
-import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core/core.module';
+
 
 @NgModule({
   declarations: [
@@ -18,8 +22,11 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    MatToolbarModule
+    FlexLayoutModule,
+    MatToolbarModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

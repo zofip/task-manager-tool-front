@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div class="header">
+    <h3>Tech Manager</h3>
+    <div class="tab"></div>
+  </div>
+
+  <div class="inserted-content">
+    <div fxLayout fxLayoutAlign="center center">
+      <form [formGroup]="loginFormGroup">
+        <div fxFlex>
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="pat@example.com"
+              formControlName="email"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div fxFlex>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" />
+          </mat-form-field>
+        </div>
+      </form>
+      <button mat-raised-button (click)="login()" color="primary">Login</button>
+    </div>
+  </div>
+  
+</div>
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>
