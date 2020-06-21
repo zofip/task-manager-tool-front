@@ -12,13 +12,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
     selector: 'app-table-filter',
-    templateUrl: './table-filter.html'
+    templateUrl: './table-filter.html',
+    styleUrls: ['./table-filter.scss']
 })
 export class TableFilterComponent implements OnInit {
 
-    @Input() columsSource: any;
+    @Input() columnsSource: any;
     @Input() data: object[];
-    @Input() titleTable: string;
 
     displayedColumns: string[];
     dataSource: MatTableDataSource<object>;
@@ -27,11 +27,12 @@ export class TableFilterComponent implements OnInit {
     @ViewChild(MatSort, { static: true }) sort: MatSort;
 
     constructor() {
-        this.displayedColumns = this.columsSource.map(colum => colum.filterColumn);
-        this.dataSource = new MatTableDataSource(this.data);
+        this.dataSource = new MatTableDataSource([]);
     }
 
     ngOnInit() {
+        this.displayedColumns = this.columnsSource.map(colum => colum.filterColumn);
+        this.dataSource = new MatTableDataSource(this.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
     }
@@ -56,7 +57,7 @@ export class TableFilterComponent implements OnInit {
         MatInputModule,
         MatPaginatorModule
     ],
-    entryComponents: [TableFilterComponent],
+    exports: [TableFilterComponent],
     declarations: [TableFilterComponent]
 })
 export class TableFilterModule { }

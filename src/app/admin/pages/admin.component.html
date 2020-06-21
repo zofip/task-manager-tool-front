@@ -4,6 +4,7 @@
     <div class="tab"></div>
   </div>
 
+  <!-- Menu -->
   <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
     <mat-card
       fxFlex
@@ -27,17 +28,25 @@
     </mat-card>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="center center">
+  <!-- Projects -->
+  <div
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    *ngIf="tabAdminEnum.Projects === selectTab"
+  >
     <mat-tab-group mat-align-tabs="center">
       <mat-tab
-        label="Projects"
+        label="All projects"
         *ngIf="adminSandbox.projects$ | async as projects; else loading"
       >
-        <app-table-filter>
+        <app-table-filter
+          titleTable="Projects"
+          [data]="projects"
+          [columnsSource]="columnsSource"
+        >
         </app-table-filter>
       </mat-tab>
-      <mat-tab label="Second">Content 2</mat-tab>
-      <mat-tab label="Third">Content 3</mat-tab>
+      <mat-tab label="Create Project">Content 2</mat-tab>
     </mat-tab-group>
   </div>
 
