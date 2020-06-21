@@ -26,7 +26,7 @@ export class AuthService {
 
     constructor(public http: HttpClient, httpErrorHandler: HttpErrorHandler) {
         this.handleError = httpErrorHandler.createHandleError('AuthService');
-        
+
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
@@ -47,13 +47,12 @@ export class AuthService {
         localStorage.setItem('token', token);
         const decoded = jwt_decode(token);
         let user = { email: decoded.email, role: decoded.role } as User;
-        console.log('User');
-        console.log(user);
         this.currentUserSubject.next(user);
     }
 
     logout() {
         this.currentUserSubject.next(null);
+        localStorage.removeItem('token');
     }
 
 }

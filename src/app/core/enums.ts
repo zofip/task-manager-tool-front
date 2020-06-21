@@ -13,11 +13,11 @@ export enum ApiUrlsEnum {
 }
 
 export enum UrlsEnum {
-    Home = '/home',
+    Home = '/home/admin',
     Admin = '/admin'
 }
 
 export enum Role {
-    Developer = 'Developer',
-    Admin = 'Admin'
+    Developer = 'developer',
+    Admin = 'admin'
 }
