@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 
+import { AuthService } from '../auth.service';
+import { UrlsEnum } from '../../enums';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -10,13 +11,11 @@ export class AuthGuard implements CanActivate {
         private authService: AuthService
     ) { }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    canActivate(route: ActivatedRouteSnapshot) {
         const currentUser = this.authService.currentUserValue;
-        console.log('------- Current User -------');
-        console.log(currentUser);
         if (currentUser) {
             if (route.data.roles && route.data.roles.indexOf(currentUser.role) === -1) {
-                this.router.navigate(['/home']);
+                this.router.navigate([UrlsEnum.Home + '/' + currentUser.role]);
                 return false;
             }
             return true;

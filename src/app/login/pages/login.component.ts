@@ -26,21 +26,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  goHome() {
-    this.router.navigate([UrlsEnum.Home]);
-  }
-
   login() {
     this.authService.login(this.loginFormGroup.getRawValue())
       .subscribe(response => {
         if (response.token) {
-          this.authService.userLogedIn(response.token);
-          this.goHome();
-        } else {
-          console.log('Usuario o contraseña invalidos')
+          this.authService.saveUserDetails(response.token);
+          this.router.navigate([UrlsEnum.Home + '/' + this.authService.currentUserValue.role]);
+        } else{
+          console.log('Usuario y contraseña invalidos')
         }
-
-      });;
+      });
   }
 
 }

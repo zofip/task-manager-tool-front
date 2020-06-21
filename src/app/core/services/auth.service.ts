@@ -27,7 +27,7 @@ export class AuthService {
     constructor(public http: HttpClient, httpErrorHandler: HttpErrorHandler) {
         this.handleError = httpErrorHandler.createHandleError('AuthService');
 
-        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+        this.currentUserSubject = new BehaviorSubject<User>(this.decodeToken(localStorage.getItem('token')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
@@ -38,21 +38,25 @@ export class AuthService {
     login(data): Observable<any> {
         const url = BACKEND_URL.concat(ApiUrlsEnum.Login);
         return this.http.post<any>(url, data, httpOptions)
-            .pipe(
-                catchError(this.handleError('login', data.email))
-            );
+            .pipe(catchError(this.handleError('login', data.email)));
     }
 
-    userLogedIn(token) {
+    saveUserDetails(token) {
         localStorage.setItem('token', token);
-        const decoded = jwt_decode(token);
-        let user = { email: decoded.email, role: decoded.role } as User;
-        this.currentUserSubject.next(user);
+        this.currentUserSubject.next(this.decodeToken(token));
     }
 
     logout() {
         this.currentUserSubject.next(null);
         localStorage.removeItem('token');
+    }
+
+    private decodeToken(token) {
+        if (token) {
+            const decoded = jwt_decode(token);
+            return { email: decoded.email, role: decoded.role } as User;
+        }
+        return null;
     }
 
 }
