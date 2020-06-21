@@ -8,5 +8,6 @@ export enum TabAdminEnum {
 }
 
 export enum ApiUrlsEnum {
-    Login = 'login'
+    Login = 'login',
+    Projects = 'projects'
 }
