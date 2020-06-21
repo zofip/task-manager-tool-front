@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  //backend_url: 'http://localhost:8626/'
-  backend_url: 'https://task-manager-tool-back.herokuapp.com/'
+  backend_url: 'http://localhost:8626/'
 };
 
 /*
