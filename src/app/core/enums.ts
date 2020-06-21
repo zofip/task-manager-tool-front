@@ -13,13 +13,13 @@ export enum ApiUrlsEnum {
 }
 
 export enum UrlsEnum {
-    Home = '/home/admin',
-    Admin = '/admin'
+    Home = '/home'
 }
 
 export enum Role {
     Developer = 'developer',
-    Admin = 'admin'
+    Admin = 'admin',
+    Unknow = 'unknow',
 }
 
 export enum TitleDialogEnum {
