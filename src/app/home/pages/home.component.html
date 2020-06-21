@@ -1,7 +1,7 @@
 <ng-template #routerHome>
   <router-outlet></router-outlet>
 </ng-template>
-<app-navbar-login [personLogged]="true"
-  project="Task Manager" (clickProject)="goHome()" linkChangePassword="xxx"
+<app-navbar-login [user]="true"
+  project="Task Manager" linkChangePassword="xxx"
   [contentTemplate]="routerHome">
 </app-navbar-login>

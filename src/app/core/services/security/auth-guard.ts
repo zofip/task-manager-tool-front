@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 
 import { AuthService } from '../auth.service';
-import { UrlsEnum } from '../../enums';
+import { UrlsEnum, Role } from '../../enums';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -15,7 +15,8 @@ export class AuthGuard implements CanActivate {
         const currentUser = this.authService.currentUserValue;
         if (currentUser) {
             if (route.data.roles && route.data.roles.indexOf(currentUser.role) === -1) {
-                this.router.navigate([UrlsEnum.Home + '/' + currentUser.role]);
+                const uri = currentUser.role !== Role.Admin ? UrlsEnum.Home : UrlsEnum.Home + '/' + currentUser.role;
+                this.router.navigate([uri]);
                 return false;
             }
             return true;

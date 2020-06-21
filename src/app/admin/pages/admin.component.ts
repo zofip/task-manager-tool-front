@@ -44,28 +44,28 @@ export class AdminComponent implements OnInit {
   save() {
     const dataFormProject = this.formProjectComponent.formProjectGroup.getRawValue();
     this.adminSandbox.post(dataFormProject).subscribe(response => {
-      if (ErrorStatusEnum.OK === response.status) {
-        this.dialog.open(MsgDialogComponent, {
-          data: {
-            title: TitleDialogEnum.Info,
-            icon: IconsEnum.Info,
-            color: ColorsEnum.Info,
-            typeMessage: MsgDialogEnum.Info,
-            message: MessagesEnum.savedSuccessfully
-          }
-        });
-      } else {
+      this.dialog.open(MsgDialogComponent, {
+        data: {
+          title: TitleDialogEnum.Info,
+          icon: IconsEnum.Info,
+          color: ColorsEnum.Info,
+          typeMessage: MsgDialogEnum.Info,
+          message: MessagesEnum.savedSuccessfully
+        }
+      });
+    },
+      error => {
         this.dialog.open(MsgDialogComponent, {
           data: {
             title: TitleDialogEnum.Error,
             icon: IconsEnum.Error,
             color: ColorsEnum.Error,
             typeMessage: MsgDialogEnum.Error,
-            message: MessagesEnum.serviceError
+            message: error
           }
         });
       }
-    });
+    );
   }
 
 }

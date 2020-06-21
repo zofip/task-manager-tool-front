@@ -5,9 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { NavBarLoginModule } from '../ui/navbar-login/navbar-login';
 import { AdminModule } from '../admin/admin.module';
 
-import { HomeSandbox } from './home.sandbox';
 import { HomeComponent } from './pages/home.component';
-
 
 
 @NgModule({
@@ -17,7 +15,6 @@ import { HomeComponent } from './pages/home.component';
     NavBarLoginModule,
     AdminModule
   ],
-  providers: [HomeSandbox],
   declarations: [HomeComponent]
 })
 export class HomeModule { }

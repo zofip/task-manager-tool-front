@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog';
 
 import { AuthService } from 'src/app/core/services/auth.service';
-import { UrlsEnum, TitleDialogEnum, IconsEnum, ColorsEnum, MsgDialogEnum, MessagesEnum } from 'src/app/core/enums';
+import { UrlsEnum, TitleDialogEnum, IconsEnum, ColorsEnum, MsgDialogEnum, MessagesEnum, Role } from 'src/app/core/enums';
 import { MsgDialogComponent } from 'src/app/ui/msg-dialog/msg-dialog';
 
 
@@ -35,8 +35,10 @@ export class LoginComponent implements OnInit {
       .subscribe(response => {
         if (response.token) {
           this.authService.saveUserDetails(response.token);
-          this.router.navigate([UrlsEnum.Home + '/' + this.authService.currentUserValue.role]);
-        } else{
+          const role = this.authService.currentUserValue.role;
+          const uri = role !== Role.Admin ? UrlsEnum.Home : UrlsEnum.Home + '/' + role;
+          this.router.navigate([uri]);
+        } else {
           this.dialog.open(MsgDialogComponent, {
             data: {
               title: TitleDialogEnum.Warn,

@@ -19,7 +19,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { User } from '../../core/models/user.model';
 
-
 @Component({
   selector: 'app-navbar-login',
   templateUrl: './navbar-login.html',
@@ -27,7 +26,7 @@ import { User } from '../../core/models/user.model';
 })
 export class NavBarLoginComponent {
 
-  @Input() personLogged: User;
+  @Input() user: User;
   @Input() project: string;
   @Input() contentTemplate: TemplateRef<any>;
   @Input() linkChangePassword: string;
@@ -40,14 +39,6 @@ export class NavBarLoginComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver) { }
-
-  // isAuthenticated(): boolean {
-  //   if (this.keycloakService) {
-  //     return this.keycloakService.isLoggedIn();
-  //   } else {
-  //     return false;
-  //   }
-  // }
 
   logout() {
     // this.keycloakService.logout();
@@ -63,8 +54,6 @@ export class NavBarLoginComponent {
   imports: [
     CommonModule,
     HttpClientModule,
-    // TranslateModule.forRoot(),
-    // BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
