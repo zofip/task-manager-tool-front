@@ -5,13 +5,13 @@ import { Observable } from 'rxjs';
 
 // import { PersonaService } from '../core/services/persona.service';
 
-import { Persona } from '../core/models/persona.model';
+import { User } from '../core/models/user.model';
 
 
 @Injectable()
 export class HomeSandbox {
 
-  public personLogged$: Observable<Persona>;
+  public personLogged$: Observable<User>;
 
   // constructor(private personaService: PersonaService) {
   //   this.personLogged$ = this.personaService.getDetail(KeycloakService.userInfo.preferred_username);

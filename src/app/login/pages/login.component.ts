@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
-import { LoginSandbox } from '../login.sandbox';
-
-
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,12 +15,12 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    public loginSandbox: LoginSandbox) {
+    private authService: AuthService) {
   }
 
   ngOnInit() {
     this.loginFormGroup = this.formBuilder.group({
-      email : new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
     });
   }
@@ -32,7 +30,15 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loginSandbox.login(this.loginFormGroup.getRawValue());
+    this.authService.login(this.loginFormGroup.getRawValue())
+      .subscribe(response => {
+        if (response.token) {
+          this.authService.userLogedIn(response.token);
+        } else {
+          console.log('Usuario o contraseña invalidos')
+        }
+
+      });;
   }
 
 }

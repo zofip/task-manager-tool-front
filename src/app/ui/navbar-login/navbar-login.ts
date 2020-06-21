@@ -17,7 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { Persona } from '../../core/models/persona.model';
+import { User } from '../../core/models/user.model';
 
 
 @Component({
@@ -27,7 +27,7 @@ import { Persona } from '../../core/models/persona.model';
 })
 export class NavBarLoginComponent {
 
-  @Input() personLogged: Persona;
+  @Input() personLogged: User;
   @Input() project: string;
   @Input() contentTemplate: TemplateRef<any>;
   @Input() linkChangePassword: string;
