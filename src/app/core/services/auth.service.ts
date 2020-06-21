@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { HandleError, HttpErrorHandler } from './http/http-error-handler.service';
 import { BACKEND_URL, ApiUrlsEnum } from '../enums';
+import * as jwt_decode from 'jwt-decode';
 
 import { User } from '../models/user.model'
 
@@ -25,6 +26,9 @@ export class AuthService {
 
     constructor(public http: HttpClient, httpErrorHandler: HttpErrorHandler) {
         this.handleError = httpErrorHandler.createHandleError('AuthService');
+        
+        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+        this.currentUser = this.currentUserSubject.asObservable();
     }
 
     public get currentUserValue(): any {
@@ -41,7 +45,10 @@ export class AuthService {
 
     userLogedIn(token) {
         localStorage.setItem('token', token);
-        const user: User = { email: 'jul@yahoo.com', role: 'admin' };
+        const decoded = jwt_decode(token);
+        let user = { email: decoded.email, role: decoded.role } as User;
+        console.log('User');
+        console.log(user);
         this.currentUserSubject.next(user);
     }
 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { AuthService } from 'src/app/core/services/auth.service';
+import { UrlsEnum } from 'src/app/core/enums';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   goHome() {
-    // this.router.navigate([UrlsEnum.Home]);
+    this.router.navigate([UrlsEnum.Home]);
   }
 
   login() {
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
       .subscribe(response => {
         if (response.token) {
           this.authService.userLogedIn(response.token);
+          this.goHome();
         } else {
           console.log('Usuario o contraseña invalidos')
         }

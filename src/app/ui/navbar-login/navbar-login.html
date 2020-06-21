@@ -9,17 +9,13 @@
         <!-- Change password -->
         <button mat-button [matMenuTriggerFor]="menu">
           <mat-icon>account_circle</mat-icon>
-          {{ personLogged.nombreCompleto }}
+          {{ personLogged.email }}
         </button>
         <mat-menu #menu="matMenu">
           <mat-card>
             <mat-card-content fxLayout="column" fxLayoutAlign="start start">
-              <div class="accent"><strong>State:</strong></div>
-              <div> {{ personLogged.estado }} </div>
               <div class="accent"><strong>Email </strong></div>
               <div>{{ personLogged.email }}</div>
-              <div class="accent"><strong>RFC </strong></div>
-              <div>{{ personLogged.rfc }}</div>
             </mat-card-content>
           </mat-card>
           <a mat-menu-item [href]="linkChangePassword" target="_blank">

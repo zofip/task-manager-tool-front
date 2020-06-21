@@ -4,6 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home.component';
 import { AdminComponent } from '../admin/pages/admin.component';
 
+import { AuthGuard } from '../core/services/security/auth-guard';
+
+import { Role } from 'src/app/core/enums';
+
 const routes: Routes = [
   {
     path: '',
@@ -11,7 +15,9 @@ const routes: Routes = [
     children: [
       {
         path: 'admin',
-        component: AdminComponent
+        component: AdminComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [Role.Admin] }
       },
       {
         path: '**',

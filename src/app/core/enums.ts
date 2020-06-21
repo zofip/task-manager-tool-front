@@ -11,3 +11,13 @@ export enum ApiUrlsEnum {
     Login = 'login',
     Projects = 'projects'
 }
+
+export enum UrlsEnum {
+    Home = '/home',
+    Admin = '/admin'
+}
+
+export enum Role {
+    Developer = 'Developer',
+    Admin = 'Admin'
+}

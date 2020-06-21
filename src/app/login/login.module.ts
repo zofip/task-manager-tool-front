@@ -11,10 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginRoutingModule } from './login-routing.module';
 
 import { SpinnerModule } from '../ui/spinner/spinner';
-
-import { LoginSandbox } from './login.sandbox';
 import { LoginComponent } from './pages/login.component';
-
 
 
 @NgModule({
@@ -30,7 +27,6 @@ import { LoginComponent } from './pages/login.component';
     MatButtonModule,
     SpinnerModule
   ],
-  providers: [LoginSandbox],
   declarations: [LoginComponent]
 })
 export class LoginModule { }
