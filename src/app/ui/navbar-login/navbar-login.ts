@@ -18,6 +18,8 @@ import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { User } from '../../core/models/user.model';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-login',
@@ -32,16 +34,12 @@ export class NavBarLoginComponent {
   @Input() linkChangePassword: string;
   @Output() clickProject: EventEmitter<boolean> = new EventEmitter();
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches)
-    );
-
-  constructor(
-    private breakpointObserver: BreakpointObserver) { }
+  constructor(private router: Router,
+    private authService: AuthService) { }
 
   logout() {
-    // this.keycloakService.logout();
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 
   emitClick() {
