@@ -3,51 +3,54 @@
     <h3>Admin</h3>
     <div class="tab"></div>
   </div>
-
-  <!-- Menu -->
-  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
-    <mat-card
-      fxFlex
-      class="element-card"
-      [class.element-card-checked]="tabAdminEnum.Projects === selectTab"
-      (click)="select(tabAdminEnum.Projects)"
-    >
-      <mat-card-header>
-        <mat-card-title>Projects</mat-card-title>
-      </mat-card-header>
-    </mat-card>
-    <mat-card
-      fxFlex
-      class="element-card"
-      [class.element-card-checked]="tabAdminEnum.Users === selectTab"
-      (click)="select(tabAdminEnum.Users)"
-    >
-      <mat-card-header>
-        <mat-card-title>Users</mat-card-title>
-      </mat-card-header>
-    </mat-card>
-  </div>
-
-  <!-- Projects -->
-  <div
-    fxLayout="row"
-    fxLayoutAlign="center center"
-    *ngIf="tabAdminEnum.Projects === selectTab"
-  >
-    <mat-tab-group mat-align-tabs="center">
-      <mat-tab
-        label="All projects"
-        *ngIf="adminSandbox.projects$ | async as projects; else loading"
+  <div class="inserted-content">
+    <!-- Menu -->
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <mat-card
+        fxFlex
+        class="element-card"
+        [class.element-card-checked]="tabAdminEnum.Projects === selectTab"
+        (click)="select(tabAdminEnum.Projects)"
       >
-        <app-table-filter
-          titleTable="Projects"
-          [data]="projects"
-          [columnsSource]="columnsSource"
+        <mat-card-header>
+          <mat-card-title>Projects</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+      <mat-card
+        fxFlex
+        class="element-card"
+        [class.element-card-checked]="tabAdminEnum.Users === selectTab"
+        (click)="select(tabAdminEnum.Users)"
+      >
+        <mat-card-header>
+          <mat-card-title>Users</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </div>
+
+    <!-- Projects -->
+    <div
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      *ngIf="tabAdminEnum.Projects === selectTab"
+    >
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab
+          label="All projects"
+          *ngIf="adminSandbox.projects$ | async as projects; else loading"
         >
-        </app-table-filter>
-      </mat-tab>
-      <mat-tab label="Create Project">Content 2</mat-tab>
-    </mat-tab-group>
+          <app-table-filter
+            titleTable="Projects"
+            [data]="projects"
+            [columnsSource]="columnsSource"
+          >
+          </app-table-filter>
+        </mat-tab>
+        <mat-tab label="Create Project">
+          <app-form-project (clickSave)="save()"></app-form-project>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
   </div>
 
   <ng-template #loading>

@@ -21,3 +21,35 @@ export enum Role {
     Developer = 'developer',
     Admin = 'admin'
 }
+
+export enum TitleDialogEnum {
+    Warn = 'Warning',
+    Info = 'Info',
+    Error = 'Error'
+}
+
+export enum IconsEnum {
+    Error = 'error',
+    Info = 'info'
+}
+
+export enum ColorsEnum {
+    Info = 'primary',
+    Error = 'warn',
+    Warn = 'accent'
+}
+
+export enum MsgDialogEnum {
+    Info = 'Info',
+    Error = 'Error',
+    Warn = 'Warn'
+}
+
+export enum ErrorStatusEnum {
+    OK = 200
+}
+
+export enum MessagesEnum {
+    savedSuccessfully = 'Saved successfully',
+    serviceError = 'Service Error'
+}

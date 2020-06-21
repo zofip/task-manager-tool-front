@@ -11,8 +11,12 @@ export class AdminSandbox {
 
     constructor(private projectService: ProjectService) {}
 
-    public getProjects() {
+    getProjects() {
         this.projects$ = this.projectService.getS();
+    }
+
+    post(dataProject): any {
+        return this.projectService.post(dataProject);
     }
 
 }

@@ -1,0 +1,20 @@
+<form [formGroup]="formProjectGroup">
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <div fxFlex>
+      <mat-form-field appearance="fill">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="code" required />
+      </mat-form-field>
+    </div>
+    <div fxFlex>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required />
+      </mat-form-field>
+    </div>
+  </div>
+</form>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <button mat-raised-button (click)="save()" color="primary">Save</button>
+</div>
+

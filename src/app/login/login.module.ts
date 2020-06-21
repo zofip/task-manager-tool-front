@@ -12,6 +12,7 @@ import { LoginRoutingModule } from './login-routing.module';
 
 import { SpinnerModule } from '../ui/spinner/spinner';
 import { LoginComponent } from './pages/login.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { LoginComponent } from './pages/login.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
     LoginRoutingModule,
     MatToolbarModule,
     MatFormFieldModule,

@@ -4,14 +4,13 @@
       <mat-icon [color]="data.color">{{ data.icon }}</mat-icon>
     </div>
     <div class="with-icon">
-      <h2 mat-dialog-title>{{ data.title | translate }}</h2>
+      <h2 mat-dialog-title>{{ data.title }}</h2>
     </div>
   </div>
   <mat-dialog-content>
-    <span *ngIf="data.message" >{{ data.message | translate:param }}</span>
+    <span *ngIf="data.message" >{{ data.message }}</span>
   </mat-dialog-content>
   <mat-dialog-actions align="end" fxLayoutGap="10px">
-    <button mat-stroked-button [mat-dialog-close]="true" (click)="close()" color="accent">{{ data.btnClose | translate }}</button>
-    <button mat-raised-button (click)="goOut()" [mat-dialog-close]="true" cdkFocusInitial color="accent">{{ data.btnGoOut | translate }}</button>
+    <button mat-stroked-button [mat-dialog-close]="true" (click)="close()" color="accent">Close</button>
   </mat-dialog-actions>
 </div>

@@ -34,6 +34,14 @@ export class ProjectService {
             );
     }
 
+    post(data): Observable<any> {
+        const url = BACKEND_URL.concat(ApiUrlsEnum.Projects);
+        return this.http.post<any>(url, data, httpOptions)
+            .pipe(
+                catchError(this.handleError('post', data))
+            );
+    }
+
 
     private log(message: string) {
         this.messageService.add(`ProjectService: ${message}`);

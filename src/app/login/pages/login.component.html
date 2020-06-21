@@ -3,15 +3,14 @@
 </mat-toolbar>
 
 <div class="container">
-
   <div class="header">
     <h3>Tech Manager</h3>
     <div class="tab"></div>
   </div>
 
   <div class="inserted-content">
-    <div fxLayout fxLayoutAlign="center center">
-      <form [formGroup]="loginFormGroup">
+    <form [formGroup]="loginFormGroup">
+      <div fxLayout="column" fxLayoutAlign="center center">
         <div fxFlex>
           <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
@@ -29,11 +28,12 @@
             <input matInput type="password" formControlName="password" />
           </mat-form-field>
         </div>
-      </form>
+      </div>
+    </form>
+    <div fxLayout="column" fxLayoutAlign="center center">
       <button mat-raised-button (click)="login()" color="primary">Login</button>
     </div>
   </div>
-  
 </div>
 <ng-template #loading>
   <app-spinner></app-spinner>

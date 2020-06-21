@@ -1,18 +1,13 @@
 import { NgModule, Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
-import {
-  MAT_DIALOG_DATA,
-  MatDialogModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatButtonModule
-} from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { UrlsEnum } from 'src/app/core/enums/enums';
 
 
 @Component({
@@ -25,15 +20,10 @@ export class MsgDialogComponent {
   selectClose: boolean;
 
   constructor(
-    private translate: TranslateService,
     private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any) {
       this.param = {value: this.data.param };
     }
-
-  goOut() {
-    this.router.navigate([UrlsEnum.Home]);
-  }
 
   close() {
     this.selectClose = true;
@@ -44,7 +34,6 @@ export class MsgDialogComponent {
 @NgModule({
   imports: [
     CommonModule,
-    TranslateModule.forRoot(),
     MatDialogModule,
     MatFormFieldModule,
     MatButtonModule,
