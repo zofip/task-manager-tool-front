@@ -51,5 +51,6 @@ export enum ErrorStatusEnum {
 
 export enum MessagesEnum {
     savedSuccessfully = 'Saved successfully',
-    serviceError = 'Service Error'
+    serviceError = 'Service Error',
+    InvalidUsernameAndPassword = 'Invalid username and password'
 }

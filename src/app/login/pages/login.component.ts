@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 import { AuthService } from 'src/app/core/services/auth.service';
-import { UrlsEnum } from 'src/app/core/enums';
+import { UrlsEnum, TitleDialogEnum, IconsEnum, ColorsEnum, MsgDialogEnum, MessagesEnum } from 'src/app/core/enums';
+import { MsgDialogComponent } from 'src/app/ui/msg-dialog/msg-dialog';
+
 
 @Component({
   selector: 'app-login',
@@ -16,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -33,7 +37,15 @@ export class LoginComponent implements OnInit {
           this.authService.saveUserDetails(response.token);
           this.router.navigate([UrlsEnum.Home + '/' + this.authService.currentUserValue.role]);
         } else{
-          console.log('Usuario y contraseña invalidos')
+          this.dialog.open(MsgDialogComponent, {
+            data: {
+              title: TitleDialogEnum.Warn,
+              icon: IconsEnum.Info,
+              color: ColorsEnum.Warn,
+              typeMessage: MsgDialogEnum.Warn,
+              message: MessagesEnum.InvalidUsernameAndPassword
+            }
+          });
         }
       });
   }

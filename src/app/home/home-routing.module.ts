@@ -7,12 +7,19 @@ import { AdminComponent } from '../admin/pages/admin.component';
 import { AuthGuard } from '../core/services/security/auth-guard';
 
 import { Role } from 'src/app/core/enums';
+import { DeveloperComponent } from '../developer/pages/developer.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     children: [
+      {
+        path: '',
+        component: DeveloperComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [Role.Developer] }
+      },
       {
         path: 'admin',
         component: AdminComponent,
