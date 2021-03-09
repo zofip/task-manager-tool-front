@@ -2,10 +2,8 @@ import { Component, NgModule, Input, TemplateRef, EventEmitter, Output } from '@
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
-import { BreakpointObserver, Breakpoints, LayoutModule } from '@angular/cdk/layout';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
