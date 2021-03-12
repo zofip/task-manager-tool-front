@@ -34,7 +34,7 @@ export class ProjectService {
             );
     }
 
-    post(data): Observable<any> {
+    post(data: any): Observable<any> {
         const url = BACKEND_URL.concat(ApiUrlsEnum.Projects);
         return this.http.post<any>(url, data, httpOptions)
             .pipe(
